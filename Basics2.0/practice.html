@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Creation With Prototype</title>
+  </head>
+  <body>
+    <script>
+      //Functional Approach
+      //   const Employee = function (name, age, prevCompany) {
+      //     this.company = "Google";
+      //     this.name = name;
+      //     this.age = age;
+      //     this.previousCompanyName = prevCompany;
+      //     this.slaray = function () {
+      //       return this.age > 25 ? "40LPA" : "30LPA";
+      //     };
+      //   };
+
+      //   const employee1 = new Employee("Udit", 23, "Microsoft");
+      //   console.log(employee1);
+      //   console.log(employee1.slaray());
+
+      //   const employee2 = new Employee("Harry", 26, "Amazon");
+      //   console.log(employee2);
+      //   console.log(employee2.slaray());
+
+      //Object.Create
+
+      const Employee = {
+        company: "Google",
+        name: "",
+        age: 18,
+        previousCompanyName: "",
+        salary: function () {
+          return this.age > 25 ? "40LPA" : "30LPA";
+        },
+      };
+
+      console.log(Employee);
+
+      const employee1 = Object.create(Employee, {
+        name: { value: "Udit" },
+        age: { value: 23 },
+        previousCompanyName: { value: "Microsoft" },
+      });
+      console.log(employee1);
+
+      const employee2 = Object.create(Employee, {
+        name: { value: "Harry" },
+        age: { value: 26 },
+        previousCompanyName: { value: "Amazon" },
+      });
+
+      console.log(employee2);
+    </script>
+  </body>
+</html>

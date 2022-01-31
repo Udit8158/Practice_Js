@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manupulation</title>
+  </head>
+  <body>
+    <nav class="navBar">
+      <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <script>
+      // console.log(document);
+      // console.log(document.all);
+      // console.log(document.links[0].href);
+
+      const navBar = document.querySelector(".navBar");
+      // console.log(navBar);
+      // console.log(navBar.children[0].children[1].children[0].href);
+
+      const newLi = document.createElement("li");
+      newLi.innerHTML = `<a href= "/new"> New </a>`;
+      newLi.classList.add("newList");
+      newLi.id = "new";
+      console.log(newLi);
+
+      navBar.children[0].appendChild(newLi);
+      navBar.children[0].removeChild(navBar.children[0].children[2]); //It remove contact
+    </script>
+  </body>
+</html>
