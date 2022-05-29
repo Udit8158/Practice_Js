@@ -1,77 +1,82 @@
-// Make an array of courses
+// Grab the elements
+const listGroup = document.querySelector(".list-group");
+const sortByPriceBtn = document.querySelector(".sortByPrice");
+const sortByNameBtn = document.querySelector(".sortByName");
+
+// Course list and price
 const courses = [
   {
-    courseName: "JavaScript Course",
-    coursePrice: 99,
+    name: "JavaScript Course",
+    price: 199,
   },
   {
-    courseName: "ReacJs Course",
-    coursePrice: 2199,
+    name: "React Js Course",
+    price: 399,
   },
   {
-    courseName: "MERN Stack Course",
-    coursePrice: 3199,
+    name: "C++ Course",
+    price: 149,
   },
   {
-    courseName: "Python Course",
-    coursePrice: 199,
+    name: "Block Chain Course",
+    price: 599,
   },
   {
-    courseName: "C++ Course",
-    coursePrice: 499,
+    name: "Solidity Course",
+    price: 799,
   },
   {
-    courseName: "MongoDB Course",
-    coursePrice: 299,
+    name: "Full Java Course",
+    price: 99,
   },
 ];
 
-//Grab the elements
-const ul = document.querySelector(".list-group");
-const sortCoursesByPriceBtn = document.querySelector(".btn-success");
-const sortCoursesByNameBtn = document.querySelector(".btn-primary");
-
-//Define a function to display the courses
-const showCourses = () => {
-  ul.innerHTML = "";
+// Generating the courses
+const generateCourses = () => {
+  listGroup.innerHTML = "";
   courses.forEach((course) => {
-    const li = document.createElement("li");
-    const span = document.createElement("span");
+    // Create element
+    listItem = document.createElement("li");
+    span = document.createElement("span");
+
+    // Adding class
+    listItem.classList.add("list-group-item");
     span.classList.add("float-right");
-    li.classList.add("list-group-item");
-    li.innerText = course.courseName;
-    span.innerText = course.coursePrice + " Rs.";
-    li.appendChild(span);
-    ul.appendChild(li);
+
+    // Add courses in the list
+    listItem.innerText = course.name;
+    span.innerText = course.price + " Rs.";
+
+    // Append the list
+    listItem.appendChild(span);
+    listGroup.appendChild(listItem);
   });
 };
 
-//Call the function
-showCourses();
-
-//Sort Courses by price
-sortCoursesByPriceBtn.addEventListener("click", () => {
-  //Sorting courses array by ascending order of price
-
-  courses.sort((a, b) => a.coursePrice - b.coursePrice);
-
-  showCourses();
-});
-
-//Sort courses by name
-sortCoursesByNameBtn.addEventListener("click", () => {
-  ul.innerHTML = "";
-  //Sorting courses array by ascending order of name
+// Sorting By Price
+const sortByPrice = () => {
   courses.sort((a, b) => {
-    if (a.courseName.toLocaleLowerCase() > b.courseName.toLocaleLowerCase()) {
-      return 1; // Means "b" before "a"  accn to sort method docs
-    }
-    if (a.courseName.toLocaleLowerCase() < b.courseName.toLocaleLowerCase()) {
-      return -1;
-    }
-    return 0;
+    return a.price - b.price;
   });
+  generateCourses();
+};
 
-  //Call the function to show courses
-  showCourses();
-});
+// Sorting by name
+const sortByName = () => {
+  courses.sort((a, b) => {
+    if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
+      return 1;
+    } else if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  generateCourses();
+};
+
+// Add eventlistner
+sortByPriceBtn.addEventListener("click", sortByPrice);
+sortByNameBtn.addEventListener("click", sortByName);
+
+generateCourses();

@@ -193,4 +193,27 @@ const fibGen = (n) => {
   return resultArr;
 };
 
-console.log(fibGen(7));
+// console.log(fibGen(7));
+
+// Constructor
+
+const Employee = function (name, age, skils, previousCompanyName) {
+  (this.name = name),
+    (this.age = age),
+    (this.skils = skils),
+    (this.previousCompanyName = previousCompanyName),
+    (this.introduction = function (greet) {
+      return `${greet}, I am ${name}, former employee of ${previousCompanyName}`;
+    });
+};
+
+const harry = new Employee(
+  "Harry",
+  25,
+  ["Web", "Android", "Blockchain"],
+  "Google"
+);
+const hitesh = new Employee("Hitesh", 27, ["Web", "IOS", "Blockchain"], "Meta");
+
+// console.log(harry.skils);
+console.log(hitesh.introduction("Hi"));
