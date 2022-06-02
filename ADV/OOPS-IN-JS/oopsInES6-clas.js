@@ -40,6 +40,20 @@ class Programmer extends Employee {
   }
 }
 
+// Making multiple children (We can also make it a children of Programmer, means chlidren of a children..)
+class Manager extends Employee {
+  constructor(name, age, salary, role, experience) {
+    super(name, age, salary);
+    (this.Role = role), (this.Experience = experience);
+  }
+  info() {
+    return `Hey, I am ${this.Name} work as a ${this.Role}............`;
+  }
+}
+
+// We can also use this type of thing to get methods from multiple class or also object
+Manager.prototype.__proto__ = Programmer.prototype;
+
 const employee1 = new Employee("Hitesh", 23, "45 LPA");
 console.log(employee1);
 
@@ -50,6 +64,15 @@ const programmer1 = new Programmer(
   "Web Devoloper",
   ["Js", "Python"]
 );
+
+const manager1 = new Manager(
+  "Udit",
+  23,
+  "45 LPA",
+  "Product Manager",
+  "Intermediate"
+);
+console.log(manager1.debug());
 console.log(programmer1);
 // console.log(programmer1.present());
 console.log(programmer1.debug());
