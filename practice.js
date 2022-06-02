@@ -1,5 +1,8 @@
-let myFun = () => {
-  console.log(this);
+let obj = {
+  name: "Udit",
+  sayHi: function () {
+    return this.name;
+  },
 };
 
-myFun();
+console.log(obj.sayHi());
